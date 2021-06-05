@@ -1,0 +1,49 @@
+<div class="container">
+  <form [formGroup]="form" action="https://formspree.io/f/mrgoovyk" method="POST">
+    <div class="form-group my-4">
+      <label for="name">Name</label>
+      <div style="color: red;">
+        <input type="text" name="name" class="form-control" placeholder="*Name" autocomplete="off"
+          formControlName="name" />
+        <ul help-block>
+          <li *ngIf="form.controls.name.errors?.required && form.controls.name.dirty">this field is required</li>
+          <li
+            *ngIf="(form.controls.name.errors?.minlength || form.controls.name.errors?.maxlength) && form.controls.name.dirty ">
+            Minimum charachter:3 , maximum charachter:20</li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group my-4">
+      <label for="email">Email-Id</label>
+      <div style="color: red;">
+        <input type="text" name="email" class="form-control" placeholder="*Email" autocomplete="off"
+          formControlName="email" />
+        <ul help-block>
+          <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">this field is required</li>
+          <li *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty"> This must be a valid Email
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="form-group my-4 ">
+      <label for="massage">Your Massage</label>
+      <div style="color: red;">
+        <textarea name="massage" rows="8" cols="80" placeholder="*Massage" class="form-control"
+          formControlName="massage"></textarea>
+        <ul help-block>
+          <li *ngIf="form.controls.massage.errors?.required && form.controls.massage.dirty">this field is required</li>
+          <li
+            *ngIf="(form.controls.massage.errors?.minlength || form.controls.massage.errors?.maxlength) && form.controls.massage.dirty ">
+            Minimum charachter:10 , maximum charachter:500 </li>
+        </ul>
+      </div>
+    </div>
+    <button [disabled]="!form.valid" type="submit" class="btn btn-warning btn-lg">Send</button>
+  </form>
+
+
+
+  <p style="text-align: end;">Phone: +91 7057293793</p>
+  <p style="text-align: end;">Email: mdreyajalal0007@gmail.com</p>
+  <p style="text-align: end;">Website: www.r-learning.com</p>
+</div>
